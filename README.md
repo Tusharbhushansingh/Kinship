@@ -4,6 +4,10 @@
 
 Built as a project submission candidate for **Build, Ship, Shape: Amazon Developer Hackathon 2026**, Alexa+ track.
 
+**Project maintainer:** **Tushar Kumar** ([GitHub @Tusharbhushansingh](https://github.com/Tusharbhushansingh)) · **Demo:** [Kinship on YouTube](https://youtu.be/VnGu595roKs)
+
+*This project was developed with AI-assisted coding and documentation. Its features and limitations are described below.*
+
 > **Integration disclosure:** Kinship exposes real MCP tools, but its browser dashboard is an Alexa+-inspired simulator. It does **not** connect to an Echo device or claim access to a live Alexa+ service. Its intent recognition uses rules, not a generative language model.
 
 ## 🎬 Watch the project demo
@@ -171,9 +175,11 @@ No real grocery purchase, paid API, Amazon consumer data, calendars, notificatio
 Hackathon rules: https://amazonappdev2026.devpost.com/rules  
 Amazon Alexa+ tooling FAQ: https://amazonappdev2026.devpost.com/details/faqs
 
-## License
+## License and attribution
 
-MIT. Contributor attribution is currently generic; update this to accurately reflect authorship.
+**MIT License** — see [LICENSE](LICENSE) for the full license text.
+
+**Maintained by Tushar Kumar** (GitHub: [@Tusharbhushansingh](https://github.com/Tusharbhushansingh)), with AI assistance in developing the prototype and documentation. The license notice identifies the project copyright holders; it is separate from hackathon eligibility and does not establish sole authorship of every contribution.
 
 ## 🎥 Demo and judging resources
 
