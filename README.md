@@ -5,9 +5,9 @@ Submission candidate for **Build, Ship, Shape: Amazon Developer Hackathon 2026**
 
 > **Honest integration disclosure:** This project runs a real self-hosted MCP server. Its responsive web UI is a *simulated*, Alexa+-inspired experience; it does **not** connect to an actual Echo or a gated Alexa+ developer SDK. The hackathon FAQ explicitly permits self-hosted MCP plus a self-built simulator.
 
-![Kinship interface after generating a plan](assets/screenshot-planned.webp)
+![Kinship interface after generating a plan](assets/screenshot-planned.png)
 
-**Demo video with synthetic voice narration:** [`assets/kinship-demo-narrated.mp4`](assets/kinship-demo-narrated.mp4) (about 68 seconds; includes an AAC audio track). The original [`assets/kinship-demo.mp4`](assets/kinship-demo.mp4) is **silent**. Narration text and guidance for recording your own voice are in [`docs/NARRATION_SCRIPT.md`](docs/NARRATION_SCRIPT.md). For a nontechnical project walkthrough see [`docs/PROJECT_EXPLAINED.md`](docs/PROJECT_EXPLAINED.md).
+**Demo video (silent):** [`assets/kinship-demo.mp4`](assets/kinship-demo.mp4) (about 68 seconds). Record and upload your own narrated version to YouTube or Vimeo before entering its public link on Devpost. Narration text and guidance for recording your own voice are in [`docs/NARRATION_SCRIPT.md`](docs/NARRATION_SCRIPT.md). For a nontechnical project walkthrough see [`docs/PROJECT_EXPLAINED.md`](docs/PROJECT_EXPLAINED.md).
 
 ## Why Kinship?
 
@@ -28,7 +28,7 @@ The user can mark ingredients as purchased, complete steps, ask “What's left t
 Requires **Python 3.10+** (tested in this environment on Python 3.13).
 
 ```bash
-git clone <YOUR-GITHUB-REPOSITORY-URL>
+git clone https://github.com/Tusharbhushansingh/Kinship.git
 cd Kinship
 python -m venv .venv
 # Windows PowerShell: .venv\Scripts\Activate.ps1
@@ -149,11 +149,10 @@ Amazon Alexa+ tooling FAQ: https://amazonappdev2026.devpost.com/details/faqs
 
 ## License
 
-MIT. Replace the generic project contributor name with your preferred attribution before publishing.
+MIT. Contributor attribution is currently generic; update this to accurately reflect authorship.
 
 ## Demo narration and judging
 
-- `assets/kinship-demo-narrated.mp4` — slower synthetic voiceover (not a human voice).
 - `assets/kinship-demo.mp4` — silent captioned demo; recommended when recording your own narration.
 - `docs/NARRATION_SCRIPT.md` — exact spoken script with timings.
 - `docs/RECORD_YOUR_VOICE.md` — create a naturally narrated version using your laptop.
