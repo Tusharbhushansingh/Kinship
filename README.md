@@ -1,13 +1,32 @@
-# ✳ Kinship — more living, less juggling
+# ✳ Kinship — More Living, Less Juggling
 
-**An Alexa+-inspired, stateful household co-pilot using MCP 2025-11-25 over Streamable HTTP.**  
-Submission candidate for **Build, Ship, Shape: Amazon Developer Hackathon 2026**, Alexa+ primary track.
+**An Alexa+-inspired household planning assistant with a self-hosted MCP server (Streamable HTTP, protocol version 2025-11-25).**
 
-> **Honest integration disclosure:** This project runs a real self-hosted MCP server. Its responsive web UI is a *simulated*, Alexa+-inspired experience; it does **not** connect to an actual Echo or a gated Alexa+ developer SDK. The hackathon FAQ explicitly permits self-hosted MCP plus a self-built simulator.
+Built as a project submission candidate for **Build, Ship, Shape: Amazon Developer Hackathon 2026**, Alexa+ track.
 
-![Kinship interface after generating a plan](assets/screenshot-planned.png)
+> **Integration disclosure:** Kinship exposes real MCP tools, but its browser dashboard is an Alexa+-inspired simulator. It does **not** connect to an Echo device or claim access to a live Alexa+ service. Its intent recognition uses rules, not a generative language model.
 
-**Demo video (silent):** [`assets/kinship-demo.mp4`](assets/kinship-demo.mp4) (about 68 seconds). Record and upload your own narrated version to YouTube or Vimeo before entering its public link on Devpost. Narration text and guidance for recording your own voice are in [`docs/NARRATION_SCRIPT.md`](docs/NARRATION_SCRIPT.md). For a nontechnical project walkthrough see [`docs/PROJECT_EXPLAINED.md`](docs/PROJECT_EXPLAINED.md).
+## 🎬 Watch the project demo
+
+[![Watch Kinship's demo on YouTube](assets/demo-poster.png)](https://youtu.be/VnGu595roKs)
+
+**▶ [Watch the Kinship demo on YouTube](https://youtu.be/VnGu595roKs)**
+
+The repository also includes the [original silent demonstration](assets/kinship-demo.mp4) and a [narration script](docs/NARRATION_SCRIPT.md). The YouTube video is supplied by the project entrant; it is a video link, not a YouTube channel URL.
+
+## 📸 Application screenshots
+
+**Dinner plan and dashboard**
+
+![Kinship dashboard showing a generated dinner plan](assets/screenshot-planned.png)
+
+| Initial household view | Grocery-list progress |
+| --- | --- |
+| ![Kinship initial dashboard](assets/screenshot-initial.png) | ![Kinship after marking groceries purchased](assets/screenshot-purchased.png) |
+
+**Cooking-task progress**
+
+![Kinship task progress](assets/screenshot-tasks.png)
 
 ## Why Kinship?
 
@@ -23,19 +42,24 @@ Submission candidate for **Build, Ship, Shape: Amazon Developer Hackathon 2026**
 
 The user can mark ingredients as purchased, complete steps, ask “What's left to do?”, then reload to find the current state still available. The same state-changing operations are available to standard MCP clients, not just the web frontend.
 
-## 60-second quick start
+## 🚀 Run Kinship locally
 
-Requires **Python 3.10+** (tested in this environment on Python 3.13).
+Requires **Python 3.10+**.
+
+**macOS / Linux:**
 
 ```bash
 git clone https://github.com/Tusharbhushansingh/Kinship.git
 cd Kinship
-python -m venv .venv
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-# macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
+
+**Windows PowerShell:** After cloning and opening the `Kinship` folder, run `py -m venv .venv`, then `.venv\Scripts\Activate.ps1`, install the dependencies, and start the same Uvicorn command.
+
+If PowerShell blocks activation, use `.venv\Scripts\python.exe -m pip install -r requirements.txt` and `.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000` instead.
 
 Open **http://127.0.0.1:8000**. Click **Dinner for 4 · under $15**, tick an ingredient, tick a cooking task, and then click **Today's brief**. Use **Reset demo household** to replay.
 
@@ -48,7 +72,7 @@ docker run --rm -p 127.0.0.1:8000:8000 kinship
 
 For durable Docker state, mount a volume and set `KINSHIP_DB=/data/kinship.db` (sample DB is reset on a fresh container otherwise).
 
-## Real MCP transport
+## 🔌 Real MCP transport
 
 - **Endpoint:** `POST http://127.0.0.1:8000/mcp`.
 - **Version:** `2025-11-25` (minimum specified by the Alexa+ hackathon track).
@@ -89,7 +113,7 @@ curl -s http://127.0.0.1:8000/mcp \
 
 On Windows, use PowerShell's `curl.exe` or the included `scripts/mcp_demo.py` Python client instead.
 
-## Architecture
+## 🧩 Architecture
 
 ```mermaid
 flowchart TD
@@ -122,7 +146,7 @@ Dockerfile             Reproducible self-hosted runtime
 LICENSE                MIT open-source project license
 ```
 
-## Tests
+## ✅ Automated tests
 
 ```bash
 pip install -r requirements-dev.txt
@@ -131,7 +155,7 @@ python -m pytest -q
 
 Expected: 3 passing tests. Tests isolate SQLite to a temporary DB and cover real ASGI requests through the MCP and REST endpoints. Tested in a container with FastAPI 0.128.2, Python 3.13 and httpx 0.28.1; judges can rerun.
 
-## Deploying or judging
+## 🛠️ Deployment and evaluation
 
 The included Dockerfile runs the same app in a self-hosted container. Local-only setup is sufficient for a reproducible judge walkthrough. To host it publicly, deploy Docker to any provider, use HTTPS, and configure a strong `MCP_API_KEY` (Bearer auth on `/mcp`) plus explicit `MCP_ALLOWED_ORIGINS`. Keep the UI in a controlled demo environment: as shipped, all UI visitors share the **same fictional household state**, and `/api` endpoints are not authenticated. Do **not** put real household names, shopping or payment details in this demo. Use a reverse-proxy access control layer and isolated storage/users before any production deployment.
 
@@ -141,7 +165,7 @@ No real grocery purchase, paid API, Amazon consumer data, calendars, notificatio
 
 - **Primary track:** Alexa+ — specifically the self-hosted MCP server path.
 - **Bonus track:** Not claimed. A single public primary-track repo does **not** automatically qualify for the separate Open Source mini challenge (which requires additional work/contribution), nor does it qualify for AWS Builder without AWS usage.
-- **Entrant responsibilities:** Read and verify the official rules, register on Devpost, make the source accessible on GitHub, personally review/customize your project before claiming it as your work, upload the working video publicly to YouTube/Vimeo, and submit truthful product feedback.
+- **Entrant responsibilities:** Review the official rules, join the hackathon on Devpost, run and understand this code, accurately describe your own contributions and any AI assistance, ensure the YouTube video is publicly accessible, and submit truthful product feedback.
 - **Recorded assets:** Demo screenshots depict an actually running local app. Screenshots and demo video are illustrative sample data; they are not proof of live Alexa+ access.
 
 Hackathon rules: https://amazonappdev2026.devpost.com/rules  
@@ -151,9 +175,10 @@ Amazon Alexa+ tooling FAQ: https://amazonappdev2026.devpost.com/details/faqs
 
 MIT. Contributor attribution is currently generic; update this to accurately reflect authorship.
 
-## Demo narration and judging
+## 🎥 Demo and judging resources
 
-- `assets/kinship-demo.mp4` — silent captioned demo; recommended when recording your own narration.
+- [YouTube demo](https://youtu.be/VnGu595roKs) — main video link supplied by the entrant.
+- `assets/kinship-demo.mp4` — original silent captioned demo stored in this repository.
 - `docs/NARRATION_SCRIPT.md` — exact spoken script with timings.
 - `docs/RECORD_YOUR_VOICE.md` — create a naturally narrated version using your laptop.
 - `docs/JUDGE_QA_GUIDE.md` — project architecture and likely verification questions.
