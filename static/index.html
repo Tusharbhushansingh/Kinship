@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#121622" />
+  <title>Kinship — home, in harmony</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="rail">
+    <div class="brand"><span class="brandmark">✳</span><span>kinship<span class="branddot">.</span></span></div>
+    <div class="rail-tag">THE EVERYDAY CO-PILOT</div>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#dashboard" class="nav-item active"><span>⌂</span> Overview</a>
+      <a href="#plan" class="nav-item"><span>◈</span> Dinner planner</a>
+      <a href="#shopping" class="nav-item"><span>▤</span> Shopping</a>
+      <a href="#tasks" class="nav-item"><span>◷</span> Family tasks</a>
+    </nav>
+    <div class="rail-bottom">
+      <div class="rail-card"><span class="online-dot"></span><b>Live MCP server</b><small>Streamable HTTP · 2025-11-25</small><code>POST /mcp</code></div>
+      <p>Alexa+-inspired web simulation, not connected to a live Alexa device.</p>
+      <button id="reset" class="ghost-button" type="button">↻ Reset demo household</button>
+    </div>
+  </aside>
+  <main id="dashboard" class="main">
+    <div class="topline"><span><span class="online-dot"></span> Households, happier together</span><span class="demo-label">LIVE INTERACTIVE DEMO <span class="round-icon">↗</span></span></div>
+    <section class="hero">
+      <div class="hero-text"><div class="eyebrow">YOUR HOME, BEAUTIFULLY IN SYNC</div><h1>More living.<br><em>Less juggling.</em></h1>
+      <p>Just ask. Kinship turns one everyday request into a thoughtful dinner plan, grocery list and shared to-dos.</p>
+      <button id="hero-demo" class="primary-button" type="button">Try a one-command plan <span>↗</span></button></div>
+      <div class="hero-art" aria-label="Abstract illustration of a cozy home"><div class="art-orbit orbit-1"></div><div class="art-orbit orbit-2"></div><div class="art-sun">✹</div><div class="art-house"><div class="roof"></div><div class="walls"><div class="window">✳</div><div class="door"></div></div></div><div class="art-stamp">a little more<br>together ✺</div></div>
+    </section>
+    <div class="stat-grid">
+      <article class="stat-card"><span class="stat-icon lavender">◈</span><div><small>Tonight's menu</small><strong id="stat-dinner">Not planned yet</strong></div></article>
+      <article class="stat-card"><span class="stat-icon peach">▤</span><div><small>Estimated to buy</small><strong id="stat-spend">$0.00</strong></div></article>
+      <article class="stat-card"><span class="stat-icon mint">✓</span><div><small>Open family tasks</small><strong id="stat-tasks">0 tasks</strong></div></article>
+    </div>
+    <section class="workspace">
+      <div class="section-heading"><div><div class="eyebrow">THE MAGIC STARTS HERE</div><h2>Tell Kinship what you need</h2></div><span class="pill">✦ Voice-first concept</span></div>
+      <div class="chat-card">
+        <div class="chat-header"><div class="avatar">✳</div><div><b>Kinship Assistant</b><small>Making home life easier, one plan at a time</small></div><span class="status-dot">● Ready</span></div>
+        <div id="messages" class="messages" aria-live="polite"><div class="bubble bot"><span>✳</span><p>Hey there! Tell me what you're planning. I'll check the pantry, compare recipes, respect your budget and delegate the prep.</p></div></div>
+        <div class="suggestions"><button type="button" data-prompt="Plan a vegetarian dinner for 4 under $15">✧ Dinner for 4 · under $15</button><button type="button" data-prompt="What's left to do?">☑ Today's brief</button><button type="button" data-prompt="What recipes can you make?">◈ Explore recipes</button></div>
+        <form id="command-form" class="composer"><button type="button" id="mic" class="mic" aria-label="Use browser microphone" title="Use browser speech recognition if available">♬</button><input id="prompt" autocomplete="off" aria-label="Tell Kinship what you need" placeholder="Try: Plan dinner for 6 under $20" maxlength="500" required /><button class="send" aria-label="Send message" type="submit">➜</button></form>
+      </div>
+      <div class="two-column">
+        <section id="plan" class="panel plan-panel"><div class="panel-header"><div><div class="eyebrow">CURATED FOR YOU</div><h3>Tonight's plan</h3></div><span class="panel-icon">🍃</span></div><div id="dinner-content" class="empty"><span class="empty-icon">🍲</span><h4>Good things are cooking</h4><p>Your dinner plan will appear here after you ask Kinship.</p></div></section>
+        <section id="shopping" class="panel shopping-panel"><div class="panel-header"><div><div class="eyebrow">JUST WHAT YOU NEED</div><h3>Shopping list</h3></div><span class="panel-icon">🛍</span></div><div id="shopping-content" class="empty"><span class="empty-icon">🛒</span><h4>Nothing on the list</h4><p>Plan a meal and we'll find what's missing from your pantry.</p></div></section>
+      </div>
+      <div class="two-column footer-panels">
+        <section id="tasks" class="panel"><div class="panel-header"><div><div class="eyebrow">BETTER TOGETHER</div><h3>Teamwork, sorted</h3></div><span class="panel-icon">💜</span></div><div id="task-content" class="empty compact"><span class="empty-icon">✳</span><p>A little coordination goes a long way.</p></div></section>
+        <section class="panel"><div class="panel-header"><div><div class="eyebrow">SMARTER BY DEFAULT</div><h3>What makes it work</h3></div><span class="panel-icon">⚡</span></div><div class="features"><div><span>01</span><p><b>Stateful, not forgetful</b><small>Remembers pantry, plans and progress across sessions.</small></p></div><div><span>02</span><p><b>One request, many actions</b><small>Coordinates recipe, budget, grocery and task tools.</small></p></div><div><span>03</span><p><b>Built with open MCP</b><small>Real JSON-RPC tools via Streamable HTTP.</small></p></div></div></section>
+      </div>
+      <div class="page-footer"><span>Made for more meaningful moments. ♡</span><span>Illustrative grocery prices · fictional demo household · no orders placed</span></div>
+    </section>
+  </main>
+</div>
+<script src="/static/app.js" defer></script>
+</body>
+</html>
